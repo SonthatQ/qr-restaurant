@@ -1,0 +1,128 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+  <h4 class="mb-0">📊 Sales Report</h4>
+
+  <button onclick="history.back()" class="btn btn-outline-secondary btn-sm">
+    ← ย้อนกลับ
+  </button>
+</div>
+
+
+<form method="get" class="card p-3 mb-3 shadow-sm">
+  <div class="row g-2 align-items-end">
+
+    <div class="col-md-2">
+      <label class="form-label">From Date</label>
+      <input type="date" name="date_from" value="{{ date_from }}" class="form-control">
+    </div>
+
+    <div class="col-md-2">
+      <label class="form-label">To Date</label>
+      <input type="date" name="date_to" value="{{ date_to }}" class="form-control">
+    </div>
+
+    <div class="col-md-2">
+      <label class="form-label">From Hour</label>
+      <input type="time" name="hour_from" value="{{ hour_from }}" class="form-control">
+    </div>
+
+    <div class="col-md-2">
+      <label class="form-label">To Hour</label>
+      <input type="time" name="hour_to" value="{{ hour_to }}" class="form-control">
+    </div>
+
+    <div class="col-md-2">
+      <button class="btn btn-primary w-100">Filter</button>
+    </div>
+
+    <div class="col-md-2">
+      <a href="/staff/report" class="btn btn-outline-secondary w-100">Reset</a>
+    </div>
+
+  </div>
+</form>
+
+<div class="row g-3 mb-3">
+
+  <!-- Total Orders -->
+  <div class="col-12 col-md-4">
+    <div class="card shadow-sm border-0 h-100">
+      <div class="card-body">
+        <div class="text-muted small">จำนวนออเดอร์</div>
+        <div class="fs-4 fw-bold text-primary">
+          {{ "{:,}".format(total_count) }}
+        </div>
+        <div class="small text-muted">
+          ในช่วงที่เลือก
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Total Sales -->
+  <div class="col-12 col-md-4">
+    <div class="card shadow-sm border-0 h-100">
+      <div class="card-body">
+        <div class="text-muted small">ยอดขายรวม</div>
+        <div class="fs-4 fw-bold text-success">
+          ฿{{ "{:,.2f}".format(total_amount) }}
+        </div>
+        <div class="small text-muted">
+          รวมทุกรายการ
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Average per Bill -->
+  <div class="col-12 col-md-4">
+    <div class="card shadow-sm border-0 h-100">
+      <div class="card-body">
+        <div class="text-muted small">ค่าเฉลี่ยต่อบิล</div>
+        <div class="fs-4 fw-bold text-dark">
+          ฿{{ "{:,.2f}".format((total_amount / total_count) if total_count else 0) }}
+        </div>
+        <div class="small text-muted">
+          ต่อ 1 ออเดอร์
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+<div class="card shadow-sm p-3" style="max-height: 600px; overflow-y: auto;">
+  <table class="table table-sm table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Table</th>
+        <th>Invoice</th>
+        <th>Date</th>
+        <th>Total</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for o in orders %}
+      <tr>
+        <td>{{ o.id }}</td>
+        <td>{{ o.table.name }}</td>
+        <td>{{ o.invoice_ref }}</td>
+        <td>{{ o.created_at|bkk }}</td>
+        <td>฿{{ '%.2f'|format(o.total_amount) }}</td>
+        <td>
+          <a href="/staff/orders/{{ o.id }}" class="btn btn-sm btn-outline-dark">
+            Detail
+          </a>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+{% endblock %}

@@ -1,0 +1,61 @@
+﻿{% extends "base.html" %}
+{% block content %}
+<h4 class="mb-0">{{ "เพิ่มเมนู" if not item else "แก้ไขเมนู" }}</h4>
+
+<div class="card shadow-sm mt-3">
+    <div class="card-body">
+        <!-- ✅ ต้องมี enctype="multipart/form-data" เพื่อส่งไฟล์จริง -->
+        <form method="post" action="/admin/menu/save" class="row g-3" enctype="multipart/form-data">
+            {% if item %}
+            <input type="hidden" name="item_id" value="{{ item.id }}">
+            {% endif %}
+
+            <div class="col-12">
+                <label class="form-label">ชื่อ</label>
+                <input class="form-control" name="name" required value="{{ item.name if item else '' }}">
+            </div>
+
+            <div class="col-12">
+                <label class="form-label">รายละเอียด</label>
+                <textarea class="form-control" name="description" rows="3">{{ item.description if item else '' }}</textarea>
+            </div>
+
+            <div class="col-12 col-md-6">
+                <label class="form-label">หมวด</label>
+                <input class="form-control" name="category" value="{{ item.category if item else 'General' }}">
+            </div>
+
+            <div class="col-12 col-md-6">
+                <label class="form-label">ราคา</label>
+                <input class="form-control" type="number" step="0.01" name="price" required value="{{ item.price if item else 0 }}">
+            </div>
+
+            <div class="col-12">
+                <label class="form-label">อัปโหลดรูป</label>
+                <input class="form-control" type="file" name="image_file" accept="image/*">
+                <div class="text-muted small mt-1">รองรับ jpg/png/webp</div>
+            </div>
+
+            {% if item and item.image_url %}
+            <div class="col-12">
+                <div class="text-muted small mb-1">รูปปัจจุบัน</div>
+                <img src="{{ item.image_url }}" style="max-height:120px" class="img-thumbnail" alt="{{ item.name }}">
+            </div>
+            {% endif %}
+
+            <div class="col-12">
+                <label class="form-label">สถานะ</label>
+                <select class="form-select" name="is_available">
+                    <option value="1" {% if (not item) or (item.is_available == 1) %}selected{% endif %}>แสดง</option>
+                    <option value="0" {% if item and (item.is_available == 0) %}selected{% endif %}>ซ่อน</option>
+                </select>
+            </div>
+
+            <div class="col-12 d-flex gap-2">
+                <button class="btn btn-primary" type="submit">บันทึก</button>
+                <a class="btn btn-outline-secondary" href="/admin/menu">ยกเลิก</a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

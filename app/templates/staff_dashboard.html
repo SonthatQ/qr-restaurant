@@ -1,0 +1,179 @@
+﻿{% extends "base.html" %}
+{% block content %}
+
+<div class="d-flex justify-content-between align-items-center">
+  <div>
+    <h4 class="mb-0">Staff Dashboard</h4>
+    <div class="text-muted small">ออเดอร์สด + สถานะการจ่าย + สถานะงาน</div>
+  </div>
+
+  <div class="d-flex gap-2">
+    <a href="/staff/report" class="btn btn-outline-primary btn-sm">
+      📊 Report
+    </a>
+  </div>
+</div>
+
+<div class="card shadow-sm mt-3">
+  <div class="card-body">
+    <div id="feed" class="vstack gap-2">
+
+      {% if not orders or orders|length == 0 %}
+        <div class="text-muted">ยังไม่มีออเดอร์</div>
+      {% else %}
+
+        {% for o in orders %}
+        <div class="border rounded p-2" id="row-{{ o.id }}">
+
+          <!-- Header -->
+          <div class="d-flex justify-content-between align-items-start">
+            <div>
+              <div class="fw-bold">
+                Order #{{ o.id }} • {{ o.table.name if o.table else "-" }}
+              </div>
+              <div class="small text-muted">
+                {{ o.created_at|bkk }}
+              </div>
+            </div>
+
+            <div class="text-end">
+              <div class="small">
+                Total: ฿{{ '%.2f'|format(o.total_amount) }}
+              </div>
+              <div class="small text-muted">
+                Ref: {{ o.invoice_ref }}
+              </div>
+            </div>
+          </div>
+
+          <!-- Status Row -->
+          <div class="small mt-2 d-flex flex-wrap gap-2 align-items-center">
+
+            <span>Payment:</span>
+            <span
+              class="badge {% if o.payment and o.payment.status=='paid' %}text-bg-success{% else %}text-bg-warning{% endif %}"
+              id="pay-{{ o.id }}"
+            >
+              {{ o.payment.status if o.payment else "unpaid" }}
+            </span>
+
+            <span class="ms-2">Order:</span>
+            <span class="badge text-bg-secondary" id="order-status-{{ o.id }}">
+              {{ o.order_status if o.order_status else "new" }}
+            </span>
+
+            <!-- ดูรายละเอียด -->
+            <a href="/staff/orders/{{ o.id }}"
+               class="btn btn-sm btn-outline-dark ms-auto">
+              ดูรายละเอียด
+            </a>
+
+          </div>
+
+          <!-- ปุ่มสถานะ -->
+          <div class="mt-2 d-flex gap-2 flex-wrap">
+            <button class="btn btn-sm btn-outline-primary"
+                    onclick="setOrderStatus({{ o.id }}, 'new')">new</button>
+
+            <button class="btn btn-sm btn-outline-primary"
+                    onclick="setOrderStatus({{ o.id }}, 'cooking')">cooking</button>
+
+            <button class="btn btn-sm btn-outline-primary"
+                    onclick="setOrderStatus({{ o.id }}, 'served')">served</button>
+
+            <button class="btn btn-sm btn-outline-danger"
+                    onclick="setOrderStatus({{ o.id }}, 'cancelled')">cancel</button>
+
+            <!-- Confirm Payment -->
+            {% if o.payment and o.payment.status == 'paid' %}
+              <button class="btn btn-sm btn-secondary ms-auto" disabled>
+                Paid ✅
+              </button>
+            {% else %}
+            <button
+                type="button"
+                class="btn btn-sm btn-success ms-auto"
+                id="btn-pay-{{ o.id }}"
+                onclick="confirmPayment({{ o.id }})"
+            >
+                confirm payment
+          </button>
+          
+            {% endif %}
+          </div>
+
+        </div>
+        {% endfor %}
+
+      {% endif %}
+
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+async function setOrderStatus(orderId, status) {
+  const res = await fetch(`/staff/orders/${orderId}/status?status=${status}`, {
+    method: "POST"
+  });
+
+  if (!res.ok) {
+    alert("เปลี่ยนสถานะไม่สำเร็จ");
+    return;
+  }
+
+  const el = document.getElementById(`order-status-${orderId}`);
+  if (el) el.textContent = status;
+}
+
+window.confirmPayment = async function (orderId) {
+    if (!confirm("ยืนยันว่าชำระเงินแล้วใช่ไหม?")) return;
+  
+    const btn = document.getElementById(`btn-pay-${orderId}`);
+  
+    if (btn) {
+      btn.disabled = true;
+      btn.dataset.oldText = btn.textContent;
+      btn.textContent = "กำลังยืนยัน...";
+    }
+  
+    try {
+      const res = await fetch(`/staff/orders/${orderId}/notify_payment`, {
+        method: "POST",
+      });
+  
+      if (!res.ok) {
+        const t = await res.text();
+        throw new Error(t || "ยืนยันการชำระเงินไม่สำเร็จ");
+      }
+  
+      // ✅ อัปเดต badge
+      const badge = document.getElementById(`pay-${orderId}`);
+      if (badge) {
+        badge.textContent = "paid";
+        badge.className = "badge text-bg-success";
+      }
+  
+      // ✅ เปลี่ยนปุ่มเป็น Paid
+      if (btn) {
+        btn.textContent = "Paid ✅";
+        btn.classList.remove("btn-success");
+        btn.classList.add("btn-secondary");
+        btn.disabled = true;
+      }
+  
+    } catch (err) {
+      alert("เชื่อมต่อไม่สำเร็จ: " + (err?.message || err));
+      if (btn) {
+        btn.disabled = false;
+        btn.textContent = btn.dataset.oldText || "confirm payment";
+      }
+    }
+  };
+  
+</script>
+
+<script src="/static/staff.js"></script>
+{% endblock %}

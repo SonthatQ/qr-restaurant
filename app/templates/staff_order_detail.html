@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+  <div>
+    <h4 class="mb-0">รายละเอียดบิล #{{ order.id }}</h4>
+    <div class="text-muted small">
+      Ref: {{ order.invoice_ref }} • {{ order.created_at|bkk }}
+    </div>
+  </div>
+
+  <!-- ✅ ปุ่มกลับไปหน้า report -->
+  <button onclick="goBack()" class="btn btn-outline-secondary btn-sm">
+    ← กลับ
+  </button>
+</div>
+
+
+<div class="card shadow-sm">
+  <div class="card-body">
+
+    <div class="mb-2">
+      <strong>โต๊ะ:</strong>
+      {{ order.table.name if order.table else "-" }}
+    </div>
+
+    <div class="mb-2">
+      <strong>สถานะ:</strong>
+      <span class="badge text-bg-secondary">
+        {{ order.order_status if order.order_status else "new" }}
+      </span>
+    </div>
+
+    <div class="mb-3">
+      <strong>การชำระเงิน:</strong>
+      {% if order.payment and order.payment.status == "paid" %}
+        <span class="badge text-bg-success">paid</span>
+      {% else %}
+        <span class="badge text-bg-warning">
+          {{ order.payment.status if order.payment else "unpaid" }}
+        </span>
+      {% endif %}
+    </div>
+
+    <hr>
+
+    <div class="fw-bold mb-2">รายการอาหาร</div>
+
+    {% for it in order.items %}
+    <div class="d-flex justify-content-between">
+      <div>
+        {{ it.menu_item.name }} x{{ it.qty }}
+        {% if it.note %}
+        <div class="text-muted small">↳ {{ it.note }}</div>
+        {% endif %}
+      </div>
+      <div>฿{{ '%.2f'|format(it.line_total) }}</div>
+    </div>
+    <hr class="my-2">
+    {% endfor %}
+
+    <div class="text-end fw-bold">
+      รวมทั้งหมด: ฿{{ '%.2f'|format(order.total_amount) }}
+    </div>
+
+  </div>
+</div>
+<script>
+    function goBack() {
+      if (document.referrer) {
+        window.history.back();
+      } else {
+        window.location.href = "/staff";  // fallback ถ้าเข้า URL ตรง ๆ
+      }
+    }
+</script>
+{% endblock %}

@@ -1,0 +1,13 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\.venv",
+    "\\app",
+    "\\app\\routes",
+    "\\app\\services",
+    "\\app\\static",
+    "\\app\\templates"
+  ],
+  "SelectedNode": "\\app\\routes\\__pycache__",
+  "PreviewInSolutionExplorer": false
+}

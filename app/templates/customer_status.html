@@ -1,0 +1,113 @@
+﻿{% extends "base.html" %}
+{% block content %}
+<h4 class="mb-0">สถานะโต๊ะ ({{ table.name }})</h4>
+<div class="text-muted small">อัปเดตแบบเรียลไทม์</div>
+
+<div class="card shadow-sm mt-3">
+    <div class="card-body">
+        <div id="orders">
+            {% for o in orders %}
+            <div class="border rounded p-2 mb-2" id="order-{{ o.id }}">
+                <div class="d-flex justify-content-between">
+                    <div class="fw-bold">Order #{{ o.id }}</div>
+                    <div class="small text-muted">{{ o.created_at|bkk }}</div>
+                </div>
+
+                <div class="small">ยอด: ฿{{ '%.2f'|format(o.total_amount) }} • Ref: {{ o.invoice_ref }}</div>
+
+                <div class="small d-flex flex-wrap gap-2 align-items-center mt-1">
+                    <span>Payment:</span>
+                    <span class="badge {% if o.payment and o.payment.status=='paid' %}text-bg-success{% else %}text-bg-warning{% endif %}"
+                          id="pay-{{ o.id }}">
+                        {{ o.payment.status if o.payment else 'unpaid' }}
+                    </span>
+
+                    <span class="ms-1">Order:</span>
+                    <span class="badge text-bg-secondary" id="order-status-{{ o.id }}">
+                        {{ o.order_status if o.order_status else 'new' }}
+                    </span>
+                </div>
+
+                <a class="btn btn-sm btn-outline-primary mt-2" href="/t/{{ table.token }}/pay/{{ o.id }}">ไปหน้าชำระเงิน</a>
+            </div>
+            {% endfor %}
+        </div>
+
+        <a class="btn btn-outline-secondary w-100 mt-2" href="/t/{{ table.token }}">กลับไปเมนู</a>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+const tableToken = "{{ table.token }}";
+const wsUrl = (location.protocol === "https:" ? "wss://" : "ws://") + location.host + `/ws/table/${tableToken}`;
+const ws = new WebSocket(wsUrl);
+ws.onopen = () => ws.send("hi");
+
+function setOrderBadge(orderId, status){
+  const el = document.getElementById(`order-status-${orderId}`);
+  if(!el) return;
+
+  el.textContent = status;
+
+  let cls = "text-bg-secondary";
+  if(status === "cooking") cls = "text-bg-primary";
+  if(status === "served") cls = "text-bg-success";
+  if(status === "cancelled") cls = "text-bg-danger";
+
+  el.className = "badge " + cls;
+}
+
+function setPaymentBadge(orderId, status){
+  const el = document.getElementById(`pay-${orderId}`);
+  if(!el) return;
+
+  el.textContent = status;
+  el.className = "badge " + (status === "paid" ? "text-bg-success" : "text-bg-warning");
+}
+
+    ws.onmessage = (ev) => {
+        try {
+            const msg = JSON.parse(ev.data);
+
+            // ✅ ออเดอร์ใหม่: รีโหลดเพื่อดึง list ใหม่
+            if (msg.type === "order_created") {
+                location.reload();
+                return;
+            }
+
+            // ✅ payment realtime
+            if (msg.type === "payment_update") {
+                setPaymentBadge(msg.order_id, msg.payment_status);
+              
+                if (msg.payment_status === "paid") {
+                  setTimeout(() => {
+                    window.location.href = `/t/${tableToken}`;
+                  }, 800);
+                }
+                return;
+              }
+              
+
+            if (msg.type === "payment_status") {
+                setPaymentBadge(msg.order_id, msg.payment_status || msg.status);
+                return;
+            }
+
+            // ✅ order status realtime
+            if (msg.type === "order_status") {
+                setOrderBadge(msg.order_id, msg.order_status);
+                return;
+            }
+
+            if (msg.type === "order_update" && msg.order_status) {
+                setOrderBadge(msg.order_id, msg.order_status);
+                return;
+            }
+
+        } catch { }
+    };
+
+</script>
+{% endblock %}

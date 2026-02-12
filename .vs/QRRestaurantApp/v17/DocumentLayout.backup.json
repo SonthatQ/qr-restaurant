@@ -1,0 +1,550 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\QRRestaurantApp\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\QRRestaurantApp\\app\\main.py||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:app\\main.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\QRRestaurantApp\\app\\routes\\__init__.py||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:app\\routes\\__init__.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\QRRestaurantApp\\app\\services\\__init__.py||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:app\\services\\__init__.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\QRRestaurantApp\\app\\__init__.py||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:app\\__init__.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\QRRestaurantApp\\README.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:README.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\QRRestaurantApp\\app\\static\\service-worker.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:app\\static\\service-worker.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\QRRestaurantApp\\app\\static\\manifest.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:app\\static\\manifest.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\QRRestaurantApp\\app\\static\\styles.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:app\\static\\styles.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\QRRestaurantApp\\app\\static\\admin.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:app\\static\\admin.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\QRRestaurantApp\\app\\static\\staff.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:app\\static\\staff.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\QRRestaurantApp\\app\\static\\app.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:app\\static\\app.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\QRRestaurantApp\\app\\templates\\admin_tables_edit.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:app\\templates\\admin_tables_edit.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\QRRestaurantApp\\app\\templates\\admin_tables_list.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:app\\templates\\admin_tables_list.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\QRRestaurantApp\\app\\templates\\admin_menu_edit.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:app\\templates\\admin_menu_edit.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\QRRestaurantApp\\app\\templates\\admin_menu_list.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:app\\templates\\admin_menu_list.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\QRRestaurantApp\\app\\templates\\admin_dashboard.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:app\\templates\\admin_dashboard.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\QRRestaurantApp\\app\\templates\\staff_dashboard.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:app\\templates\\staff_dashboard.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\QRRestaurantApp\\app\\templates\\customer_status.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:app\\templates\\customer_status.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\QRRestaurantApp\\app\\templates\\customer_pay.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:app\\templates\\customer_pay.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\QRRestaurantApp\\app\\templates\\customer_checkout.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:app\\templates\\customer_checkout.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\QRRestaurantApp\\app\\templates\\customer_menu.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:app\\templates\\customer_menu.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\QRRestaurantApp\\app\\templates\\base.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:app\\templates\\base.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\QRRestaurantApp\\app\\routes\\admin.py||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:app\\routes\\admin.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\QRRestaurantApp\\app\\routes\\staff.py||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:app\\routes\\staff.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\QRRestaurantApp\\app\\routes\\customer.py||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:app\\routes\\customer.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\QRRestaurantApp\\app\\routes\\scb_webhook.py||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:app\\routes\\scb_webhook.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\QRRestaurantApp\\app\\services\\payment_verify.py||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:app\\services\\payment_verify.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\QRRestaurantApp\\app\\services\\scb_qr.py||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:app\\services\\scb_qr.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\QRRestaurantApp\\app\\services\\scb_client.py||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:app\\services\\scb_client.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\QRRestaurantApp\\app\\services\\ws_manager.py||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:app\\services\\ws_manager.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\QRRestaurantApp\\app\\settings.py||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:app\\settings.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\QRRestaurantApp\\app\\models.py||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:app\\models.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\QRRestaurantApp\\app\\database.py||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:app\\database.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "__init__.py",
+              "DocumentMoniker": "D:\\QRRestaurantApp\\app\\__init__.py",
+              "RelativeDocumentMoniker": "app\\__init__.py",
+              "ToolTip": "D:\\QRRestaurantApp\\app\\__init__.py",
+              "RelativeToolTip": "app\\__init__.py",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
+              "WhenOpened": "2026-02-09T03:27:29.644Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "main.py",
+              "DocumentMoniker": "D:\\QRRestaurantApp\\app\\main.py",
+              "RelativeDocumentMoniker": "app\\main.py",
+              "ToolTip": "D:\\QRRestaurantApp\\app\\main.py",
+              "RelativeToolTip": "app\\main.py",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAmwDYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
+              "WhenOpened": "2026-02-09T02:50:20.466Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "__init__.py",
+              "DocumentMoniker": "D:\\QRRestaurantApp\\app\\services\\__init__.py",
+              "RelativeDocumentMoniker": "app\\services\\__init__.py",
+              "ToolTip": "D:\\QRRestaurantApp\\app\\services\\__init__.py",
+              "RelativeToolTip": "app\\services\\__init__.py",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
+              "WhenOpened": "2026-02-09T03:27:51.234Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "__init__.py",
+              "DocumentMoniker": "D:\\QRRestaurantApp\\app\\routes\\__init__.py",
+              "RelativeDocumentMoniker": "app\\routes\\__init__.py",
+              "ToolTip": "D:\\QRRestaurantApp\\app\\routes\\__init__.py",
+              "RelativeToolTip": "app\\routes\\__init__.py",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
+              "WhenOpened": "2026-02-09T03:27:40.432Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "service-worker.js",
+              "DocumentMoniker": "D:\\QRRestaurantApp\\app\\static\\service-worker.js",
+              "RelativeDocumentMoniker": "app\\static\\service-worker.js",
+              "ToolTip": "D:\\QRRestaurantApp\\app\\static\\service-worker.js",
+              "RelativeToolTip": "app\\static\\service-worker.js",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2026-02-09T03:13:12.936Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "README.md",
+              "DocumentMoniker": "D:\\QRRestaurantApp\\README.md",
+              "RelativeDocumentMoniker": "README.md",
+              "ToolTip": "D:\\QRRestaurantApp\\README.md",
+              "RelativeToolTip": "README.md",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
+              "WhenOpened": "2026-02-09T03:14:54.464Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "manifest.json",
+              "DocumentMoniker": "D:\\QRRestaurantApp\\app\\static\\manifest.json",
+              "RelativeDocumentMoniker": "app\\static\\manifest.json",
+              "ToolTip": "D:\\QRRestaurantApp\\app\\static\\manifest.json",
+              "RelativeToolTip": "app\\static\\manifest.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-02-09T03:12:59.015Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "styles.css",
+              "DocumentMoniker": "D:\\QRRestaurantApp\\app\\static\\styles.css",
+              "RelativeDocumentMoniker": "app\\static\\styles.css",
+              "ToolTip": "D:\\QRRestaurantApp\\app\\static\\styles.css",
+              "RelativeToolTip": "app\\static\\styles.css",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2026-02-09T03:12:36.209Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "admin.js",
+              "DocumentMoniker": "D:\\QRRestaurantApp\\app\\static\\admin.js",
+              "RelativeDocumentMoniker": "app\\static\\admin.js",
+              "ToolTip": "D:\\QRRestaurantApp\\app\\static\\admin.js",
+              "RelativeToolTip": "app\\static\\admin.js",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2026-02-09T03:12:18.271Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "staff.js",
+              "DocumentMoniker": "D:\\QRRestaurantApp\\app\\static\\staff.js",
+              "RelativeDocumentMoniker": "app\\static\\staff.js",
+              "ToolTip": "D:\\QRRestaurantApp\\app\\static\\staff.js",
+              "RelativeToolTip": "app\\static\\staff.js",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAkwC0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2026-02-09T03:12:01.496Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "app.js",
+              "DocumentMoniker": "D:\\QRRestaurantApp\\app\\static\\app.js",
+              "RelativeDocumentMoniker": "app\\static\\app.js",
+              "ToolTip": "D:\\QRRestaurantApp\\app\\static\\app.js",
+              "RelativeToolTip": "app\\static\\app.js",
+              "ViewState": "AgIAAE4AAAAAAAAAAAAkwHUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2026-02-09T03:11:46.366Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "admin_tables_edit.html",
+              "DocumentMoniker": "D:\\QRRestaurantApp\\app\\templates\\admin_tables_edit.html",
+              "RelativeDocumentMoniker": "app\\templates\\admin_tables_edit.html",
+              "ToolTip": "D:\\QRRestaurantApp\\app\\templates\\admin_tables_edit.html",
+              "RelativeToolTip": "app\\templates\\admin_tables_edit.html",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAQwCgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2026-02-09T03:11:26.08Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "admin_tables_list.html",
+              "DocumentMoniker": "D:\\QRRestaurantApp\\app\\templates\\admin_tables_list.html",
+              "RelativeDocumentMoniker": "app\\templates\\admin_tables_list.html",
+              "ToolTip": "D:\\QRRestaurantApp\\app\\templates\\admin_tables_list.html",
+              "RelativeToolTip": "app\\templates\\admin_tables_list.html",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAAwDUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2026-02-09T03:11:14.063Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "admin_menu_edit.html",
+              "DocumentMoniker": "D:\\QRRestaurantApp\\app\\templates\\admin_menu_edit.html",
+              "RelativeDocumentMoniker": "app\\templates\\admin_menu_edit.html",
+              "ToolTip": "D:\\QRRestaurantApp\\app\\templates\\admin_menu_edit.html",
+              "RelativeToolTip": "app\\templates\\admin_menu_edit.html",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAQwDQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2026-02-09T03:11:01.004Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "admin_menu_list.html",
+              "DocumentMoniker": "D:\\QRRestaurantApp\\app\\templates\\admin_menu_list.html",
+              "RelativeDocumentMoniker": "app\\templates\\admin_menu_list.html",
+              "ToolTip": "D:\\QRRestaurantApp\\app\\templates\\admin_menu_list.html",
+              "RelativeToolTip": "app\\templates\\admin_menu_list.html",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAAwDYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2026-02-09T03:10:49.366Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "admin_dashboard.html",
+              "DocumentMoniker": "D:\\QRRestaurantApp\\app\\templates\\admin_dashboard.html",
+              "RelativeDocumentMoniker": "app\\templates\\admin_dashboard.html",
+              "ToolTip": "D:\\QRRestaurantApp\\app\\templates\\admin_dashboard.html",
+              "RelativeToolTip": "app\\templates\\admin_dashboard.html",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2026-02-09T03:10:37.983Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "staff_dashboard.html",
+              "DocumentMoniker": "D:\\QRRestaurantApp\\app\\templates\\staff_dashboard.html",
+              "RelativeDocumentMoniker": "app\\templates\\staff_dashboard.html",
+              "ToolTip": "D:\\QRRestaurantApp\\app\\templates\\staff_dashboard.html",
+              "RelativeToolTip": "app\\templates\\staff_dashboard.html",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2026-02-09T03:10:24.673Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "customer_status.html",
+              "DocumentMoniker": "D:\\QRRestaurantApp\\app\\templates\\customer_status.html",
+              "RelativeDocumentMoniker": "app\\templates\\customer_status.html",
+              "ToolTip": "D:\\QRRestaurantApp\\app\\templates\\customer_status.html",
+              "RelativeToolTip": "app\\templates\\customer_status.html",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAAwDMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2026-02-09T03:10:00.01Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "customer_pay.html",
+              "DocumentMoniker": "D:\\QRRestaurantApp\\app\\templates\\customer_pay.html",
+              "RelativeDocumentMoniker": "app\\templates\\customer_pay.html",
+              "ToolTip": "D:\\QRRestaurantApp\\app\\templates\\customer_pay.html",
+              "RelativeToolTip": "app\\templates\\customer_pay.html",
+              "ViewState": "AgIAADIAAAAAAAAAAAAQwFoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2026-02-09T03:09:44.225Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "customer_checkout.html",
+              "DocumentMoniker": "D:\\QRRestaurantApp\\app\\templates\\customer_checkout.html",
+              "RelativeDocumentMoniker": "app\\templates\\customer_checkout.html",
+              "ToolTip": "D:\\QRRestaurantApp\\app\\templates\\customer_checkout.html",
+              "RelativeToolTip": "app\\templates\\customer_checkout.html",
+              "ViewState": "AgIAACUAAAAAAAAAAAAAwE0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2026-02-09T03:08:52.507Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "customer_menu.html",
+              "DocumentMoniker": "D:\\QRRestaurantApp\\app\\templates\\customer_menu.html",
+              "RelativeDocumentMoniker": "app\\templates\\customer_menu.html",
+              "ToolTip": "D:\\QRRestaurantApp\\app\\templates\\customer_menu.html",
+              "RelativeToolTip": "app\\templates\\customer_menu.html",
+              "ViewState": "AgIAADIAAAAAAAAAAAAQwFoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2026-02-09T03:08:37.649Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "base.html",
+              "DocumentMoniker": "D:\\QRRestaurantApp\\app\\templates\\base.html",
+              "RelativeDocumentMoniker": "app\\templates\\base.html",
+              "ToolTip": "D:\\QRRestaurantApp\\app\\templates\\base.html",
+              "RelativeToolTip": "app\\templates\\base.html",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAAwCwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2026-02-09T03:08:18.496Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "admin.py",
+              "DocumentMoniker": "D:\\QRRestaurantApp\\app\\routes\\admin.py",
+              "RelativeDocumentMoniker": "app\\routes\\admin.py",
+              "ToolTip": "D:\\QRRestaurantApp\\app\\routes\\admin.py",
+              "RelativeToolTip": "app\\routes\\admin.py",
+              "ViewState": "AgIAAHsAAAAAAAAAAAAowKIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
+              "WhenOpened": "2026-02-09T03:07:52.234Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "staff.py",
+              "DocumentMoniker": "D:\\QRRestaurantApp\\app\\routes\\staff.py",
+              "RelativeDocumentMoniker": "app\\routes\\staff.py",
+              "ToolTip": "D:\\QRRestaurantApp\\app\\routes\\staff.py",
+              "RelativeToolTip": "app\\routes\\staff.py",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
+              "WhenOpened": "2026-02-09T03:07:35.909Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "customer.py",
+              "DocumentMoniker": "D:\\QRRestaurantApp\\app\\routes\\customer.py",
+              "RelativeDocumentMoniker": "app\\routes\\customer.py",
+              "ToolTip": "D:\\QRRestaurantApp\\app\\routes\\customer.py",
+              "RelativeToolTip": "app\\routes\\customer.py",
+              "ViewState": "AgIAAL0AAAAAAAAAAAAowOQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
+              "WhenOpened": "2026-02-09T03:07:14.461Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "scb_webhook.py",
+              "DocumentMoniker": "D:\\QRRestaurantApp\\app\\routes\\scb_webhook.py",
+              "RelativeDocumentMoniker": "app\\routes\\scb_webhook.py",
+              "ToolTip": "D:\\QRRestaurantApp\\app\\routes\\scb_webhook.py",
+              "RelativeToolTip": "app\\routes\\scb_webhook.py",
+              "ViewState": "AgIAABQAAAAAAAAAAAAowDsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
+              "WhenOpened": "2026-02-09T03:06:59.719Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "payment_verify.py",
+              "DocumentMoniker": "D:\\QRRestaurantApp\\app\\services\\payment_verify.py",
+              "RelativeDocumentMoniker": "app\\services\\payment_verify.py",
+              "ToolTip": "D:\\QRRestaurantApp\\app\\services\\payment_verify.py",
+              "RelativeToolTip": "app\\services\\payment_verify.py",
+              "ViewState": "AgIAAGYAAAAAAAAAAAAowI0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
+              "WhenOpened": "2026-02-09T03:06:42.958Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "scb_qr.py",
+              "DocumentMoniker": "D:\\QRRestaurantApp\\app\\services\\scb_qr.py",
+              "RelativeDocumentMoniker": "app\\services\\scb_qr.py",
+              "ToolTip": "D:\\QRRestaurantApp\\app\\services\\scb_qr.py",
+              "RelativeToolTip": "app\\services\\scb_qr.py",
+              "ViewState": "AgIAAGEAAAAAAAAAAAAowIgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
+              "WhenOpened": "2026-02-09T03:06:23.858Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "scb_client.py",
+              "DocumentMoniker": "D:\\QRRestaurantApp\\app\\services\\scb_client.py",
+              "RelativeDocumentMoniker": "app\\services\\scb_client.py",
+              "ToolTip": "D:\\QRRestaurantApp\\app\\services\\scb_client.py",
+              "RelativeToolTip": "app\\services\\scb_client.py",
+              "ViewState": "AgIAAFIAAAAAAAAAAAAowHkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
+              "WhenOpened": "2026-02-09T03:06:09.334Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "ws_manager.py",
+              "DocumentMoniker": "D:\\QRRestaurantApp\\app\\services\\ws_manager.py",
+              "RelativeDocumentMoniker": "app\\services\\ws_manager.py",
+              "ToolTip": "D:\\QRRestaurantApp\\app\\services\\ws_manager.py",
+              "RelativeToolTip": "app\\services\\ws_manager.py",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAowC4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
+              "WhenOpened": "2026-02-09T03:05:36.294Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "settings.py",
+              "DocumentMoniker": "D:\\QRRestaurantApp\\app\\settings.py",
+              "RelativeDocumentMoniker": "app\\settings.py",
+              "ToolTip": "D:\\QRRestaurantApp\\app\\settings.py",
+              "RelativeToolTip": "app\\settings.py",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAowDMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
+              "WhenOpened": "2026-02-09T02:53:13.734Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "models.py",
+              "DocumentMoniker": "D:\\QRRestaurantApp\\app\\models.py",
+              "RelativeDocumentMoniker": "app\\models.py",
+              "ToolTip": "D:\\QRRestaurantApp\\app\\models.py",
+              "RelativeToolTip": "app\\models.py",
+              "ViewState": "AgIAAFMAAAAAAAAAAAAowHoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
+              "WhenOpened": "2026-02-09T02:53:01.755Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
+              "Title": "database.py",
+              "DocumentMoniker": "D:\\QRRestaurantApp\\app\\database.py",
+              "RelativeDocumentMoniker": "app\\database.py",
+              "ToolTip": "D:\\QRRestaurantApp\\app\\database.py",
+              "RelativeToolTip": "app\\database.py",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
+              "WhenOpened": "2026-02-09T02:52:38.947Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

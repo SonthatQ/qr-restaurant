@@ -1,0 +1,53 @@
+﻿{% extends "base.html" %}
+{% block content %}
+<div class="d-flex justify-content-between align-items-center">
+    <div>
+        <h4 class="mb-0">โต๊ะ</h4>
+        <div class="text-muted small">จัดการโต๊ะ + ดาวน์โหลด QR โต๊ะ</div>
+    </div>
+    <a class="btn btn-primary" href="/admin/tables/new">เพิ่มโต๊ะ</a>
+</div>
+
+<div class="card shadow-sm mt-3">
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-sm align-middle">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>ชื่อ</th>
+                        <th>Token</th>
+                        <th>สถานะ</th>
+                        <th class="text-end"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for t in tables %}
+                    <tr>
+                        <td>{{ t.id }}</td>
+                        <td class="fw-bold">{{ t.name }}</td>
+                        <td class="small text-muted">{{ t.token }}</td>
+                        <td>
+                            {% if t.is_active==1 %}
+                            <span class="badge text-bg-success">active</span>
+                            {% else %}
+                            <span class="badge text-bg-secondary">inactive</span>
+                            {% endif %}
+                        </td>
+                        <td class="text-end">
+                            <a class="btn btn-sm btn-outline-primary" href="/admin/tables/{{ t.id }}">แก้ไข</a>
+                            <a class="btn btn-sm btn-outline-success" href="/admin/tables/{{ t.id }}/qr.png" target="_blank">QR</a>
+                            <form method="post" action="/admin/tables/{{ t.id }}/delete" class="d-inline" onsubmit="return confirm('ลบโต๊ะนี้?')">
+                                <button class="btn btn-sm btn-outline-danger">ลบ</button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <a class="btn btn-outline-secondary mt-2" href="/admin">กลับ</a>
+    </div>
+</div>
+{% endblock %}

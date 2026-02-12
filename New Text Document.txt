@@ -1,0 +1,32 @@
+﻿import sqlite3
+from app.settings import settings
+
+def main():
+    url = settings.DATABASE_URL
+
+    # sqlite:///./app.db  -> ./app.db
+    if not url.startswith("sqlite"):
+        raise SystemExit("This script is for sqlite only")
+
+    db_path = url.split("sqlite:///")[-1]
+    if db_path.startswith("/"):
+        db_path = db_path[1:]
+
+    conn = sqlite3.connect(db_path)
+    cur = conn.cursor()
+
+    cur.execute("PRAGMA table_info(orders)")
+    cols = [r[1] for r in cur.fetchall()]
+
+    if "customer_id" not in cols:
+        cur.execute("ALTER TABLE orders ADD COLUMN customer_id VARCHAR(64)")
+        cur.execute("CREATE INDEX IF NOT EXISTS ix_orders_customer_id ON orders(customer_id)")
+        conn.commit()
+        print("✅ Added orders.customer_id + index")
+    else:
+        print("ℹ️ orders.customer_id already exists")
+
+    conn.close()
+
+if __name__ == "__main__":
+    main()

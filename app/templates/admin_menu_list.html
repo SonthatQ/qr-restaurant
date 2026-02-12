@@ -1,0 +1,88 @@
+﻿{% extends "base.html" %}
+{% block content %}
+<div class="d-flex justify-content-between align-items-center">
+    <div>
+        <h4 class="mb-0">เมนู</h4>
+        <div class="text-muted small">จัดการรายการสินค้า</div>
+    </div>
+    <a class="btn btn-primary" href="/admin/menu/new">เพิ่มเมนู</a>
+</div>
+
+<div class="card shadow-sm mt-3">
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-sm align-middle">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>ชื่อ</th>
+                        <th>หมวด</th>
+                        <th class="text-end">ราคา</th>
+                        <th>สถานะ</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for it in items %}
+                    <tr id="menu-row-{{ it.id }}">
+                        <td>{{ it.id }}</td>
+                        <td class="fw-bold">{{ it.name }}</td>
+                        <td>{{ it.category }}</td>
+                        <td class="text-end">฿{{ '%.2f'|format(it.price) }}</td>
+                        <td>
+                            {% if it.is_available==1 %}
+                            <span class="badge text-bg-success">available</span>
+                            {% else %}
+                            <span class="badge text-bg-secondary">hidden</span>
+                            {% endif %}
+                        </td>
+                        <td class="text-end">
+                            <a class="btn btn-sm btn-outline-primary" href="/admin/menu/{{ it.id }}">แก้ไข</a>
+                            <form method="post" action="/admin/menu/{{ it.id }}/delete" class="d-inline"
+                                  onsubmit="return confirm('ลบรายการนี้?')">
+                                <button class="btn btn-sm btn-outline-danger">ลบ</button>
+                            </form>
+
+
+
+
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <a class="btn btn-outline-secondary mt-2" href="/admin">กลับ</a>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    async function deleteMenu(id, btn) {
+        if (!confirm("ลบรายการนี้?")) return;
+
+        const row = document.getElementById(`menu-row-${id}`);
+        btn.disabled = true;
+
+        try {
+            const res = await fetch(`/admin/menu/${id}/delete`, {
+                method: "POST",
+                redirect: "manual"
+            });
+
+            if (res.ok || res.status === 0 || (res.status >= 300 && res.status < 400)) {
+                if (row) row.remove();
+                return;
+            }
+
+            alert("ลบไม่สำเร็จ");
+            btn.disabled = false;
+        } catch (e) {
+            alert("เกิดข้อผิดพลาด");
+            btn.disabled = false;
+        }
+    }
+</script>
+{% endblock %}

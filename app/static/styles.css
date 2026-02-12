@@ -1,0 +1,32 @@
+﻿body {
+    -webkit-font-smoothing: antialiased;
+}
+
+.sticky-cart {
+    position: fixed;
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+    background: #fff;
+    border-radius: 14px;
+    padding: 12px;
+    z-index: 1030;
+}
+
+@media (min-width: 992px) {
+    .sticky-cart {
+        left: auto;
+        right: 24px;
+        width: 420px;
+    }
+}
+
+.qr-img {
+    width: 240px;
+    height: 240px;
+    object-fit: contain;
+    border: 1px dashed #dee2e6;
+    border-radius: 12px;
+    padding: 10px;
+    background: #fff;
+}

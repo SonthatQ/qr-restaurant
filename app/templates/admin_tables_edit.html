@@ -1,0 +1,41 @@
+﻿{% extends "base.html" %}
+{% block content %}
+<h4 class="mb-0">{{ "เพิ่มโต๊ะ" if not table else "แก้ไขโต๊ะ" }}</h4>
+
+<div class="card shadow-sm mt-3">
+    <div class="card-body">
+        <form method="post" action="/admin/tables/save" class="row g-3">
+            {% if table %}
+            <input type="hidden" name="table_id" value="{{ table.id }}">
+            {% endif %}
+
+            <div class="col-12">
+                <label class="form-label">ชื่อโต๊ะ</label>
+                <input class="form-control" name="name" required value="{{ table.name if table else '' }}">
+            </div>
+
+            <div class="col-12">
+                <label class="form-label">Token (ลิงก์ QR)</label>
+                <input class="form-control" name="token"
+                       value="{{ table.token if table else 'จะสร้างให้อัตโนมัติเมื่อบันทึก' }}"
+                       readonly>
+                <div class="text-muted small mt-1">ระบบจะสร้าง token ให้อัตโนมัติ</div>
+
+            </div>
+
+            <div class="col-12">
+                <label class="form-label">สถานะ</label>
+                <select class="form-select" name="is_active">
+                    <option value="1" {% if (not table) or (table.is_active == 1) %}selected{% endif %}>active</option>
+                    <option value="0" {% if table and (table.is_active == 0) %}selected{% endif %}>inactive</option>
+                </select>
+            </div>
+
+            <div class="col-12 d-flex gap-2">
+                <button class="btn btn-primary">บันทึก</button>
+                <a class="btn btn-outline-secondary" href="/admin/tables">ยกเลิก</a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,77 @@
+﻿{% extends "base.html" %}
+{% block content %}
+<h4 class="mb-0">Checkout ({{ table.name }})</h4>
+<div class="text-muted small">ตรวจสอบรายการและสร้างบิล</div>
+
+<div class="row g-3 mt-2">
+    <div class="col-12 col-lg-7">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <div id="cartEmpty" class="text-muted">ตะกร้าว่าง</div>
+                <div id="cartList" class="vstack gap-2"></div>
+            </div>
+        </div>
+
+        <div class="card shadow-sm mt-3">
+            <div class="card-body">
+                <label class="form-label">หมายเหตุถึงร้าน</label>
+                <textarea id="orderNote" class="form-control" rows="3" placeholder="เช่น ไม่เผ็ด / ไม่ใส่น้ำแข็ง ..."></textarea>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-12 col-lg-5">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <div class="d-flex justify-content-between">
+                    <div class="text-muted">ยอดรวม</div>
+                    <div class="fw-bold">฿<span id="sumTotal">0.00</span></div>
+                </div>
+                <hr>
+                <button id="btnCreateOrder" class="btn btn-primary w-100 fw-bold">สร้าง Order + QR ชำระเงิน</button>
+                <a class="btn btn-outline-secondary w-100 mt-2" href="/t/{{ table.token }}">กลับไปเลือกเมนู</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="/static/app.js"></script>
+<script>
+Cart.init("{{ table.token }}", "{{ cid }}");
+Cart.renderCheckout();
+Cart.syncUI();
+document.getElementById("btnCreateOrder").addEventListener("click", async () => {
+  const note = document.getElementById("orderNote").value || "";
+  const payload = { cart: Cart.getLines(), note };
+
+  if (!payload.cart.length) {
+    alert("ตะกร้าว่าง");
+    return;
+  }
+
+  const btn = document.getElementById("btnCreateOrder");
+  btn.disabled = true;
+  btn.textContent = "กำลังสร้าง...";
+
+  try {
+    const r = await fetch(`/api/t/{{ table.token }}/orders`, {
+      method: "POST",
+      headers: {"Content-Type":"application/json"},
+      body: JSON.stringify(payload)
+    });
+    const j = await r.json();
+    if (!r.ok || !j.ok) throw new Error(j.detail || "Create order failed");
+
+    Cart.clear();
+    window.location.href = j.pay_url;
+  } catch (e) {
+    alert(e.message || "Error");
+  } finally {
+    btn.disabled = false;
+    btn.textContent = "สร้าง Order + QR ชำระเงิน";
+  }
+});
+</script>
+{% endblock %}
