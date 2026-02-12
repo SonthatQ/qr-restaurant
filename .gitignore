@@ -1,0 +1,9 @@
+@"
+.env
+.env.*
+*.db
+app.db
+__pycache__/
+.venv/
+.vs/
+"@ | Out-File -Encoding utf8 .gitignore
