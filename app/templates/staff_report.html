@@ -3,7 +3,36 @@
 
 <div class="d-flex justify-content-between align-items-center mb-3">
   <h4 class="mb-0">📊 Sales Report</h4>
-
+  <div class="d-flex gap-2 mb-3">
+    <a href="/staff/report/snapshots" class="btn btn-outline-primary btn-sm">
+      🗂️ Saved reports
+    </a>
+  
+    <button type="button" class="btn btn-success btn-sm" onclick="saveSnapshot()">
+      💾 Save report
+    </button>
+  </div>
+  
+  <script>
+  async function saveSnapshot() {
+    const params = new URLSearchParams(window.location.search);
+  
+    // ส่งค่า filter ไปด้วย (จะได้เซฟช่วงที่กำลังดูอยู่)
+    const note = prompt("ตั้งชื่อ/โน้ต report (ไม่ใส่ก็ได้):") || "";
+    if (note) params.set("note", note);
+  
+    const res = await fetch("/staff/report/save?" + params.toString(), { method: "POST" });
+  
+    if (!res.ok) {
+      const t = await res.text();
+      alert("เซฟไม่สำเร็จ: " + t);
+      return;
+    }
+  
+    const data = await res.json();
+    alert("บันทึกแล้ว ✅ Snapshot #" + data.snapshot_id);
+  }
+  </script>
   <button onclick="history.back()" class="btn btn-outline-secondary btn-sm">
     ← ย้อนกลับ
   </button>
@@ -125,4 +154,20 @@
   </table>
 </div>
 
+
+<script>
+async function saveSnapshot() {
+  const params = new URLSearchParams(window.location.search);
+  const note = prompt("ตั้งชื่อ/โน้ต report (ไม่ใส่ก็ได้):") || "";
+  params.set("note", note);
+
+  const res = await fetch("/staff/report/save?" + params.toString(), { method: "POST" });
+  if (!res.ok) {
+    alert("เซฟไม่สำเร็จ");
+    return;
+  }
+  const data = await res.json();
+  alert("บันทึกแล้ว ✅ #" + data.snapshot_id);
+}
+</script>
 {% endblock %}

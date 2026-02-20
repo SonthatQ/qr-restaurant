@@ -1,6 +1,4 @@
-﻿
-
-# ----------------------------
+﻿# ----------------------------
 # Sales report
 # ----------------------------
 from __future__ import annotations
@@ -12,21 +10,22 @@ from fastapi import APIRouter, Depends, HTTPException, Request
 from fastapi.responses import HTMLResponse
 from fastapi.security import HTTPBasic, HTTPBasicCredentials
 from fastapi.templating import Jinja2Templates
-from sqlalchemy import func
 from sqlalchemy.orm import Session, joinedload
 
 from app.database import get_db
-from app.models import Order, Payment, OrderItem
+from app.models import Order, Payment, OrderItem, ReportSnapshot
 from app.services.ws_manager import ws_manager
 from app.settings import settings
 
+# ----------------------------
+# Router / Templates / Security  (ต้องอยู่ก่อนใช้ @router)
+# ----------------------------
 router = APIRouter()
 templates = Jinja2Templates(directory="app/templates")
 security = HTTPBasic()
 
-
 # ----------------------------
-# Auth
+# Auth  (ต้องอยู่ก่อน Depends(_require_staff))
 # ----------------------------
 def _require_staff(creds: HTTPBasicCredentials = Depends(security)) -> None:
     ok_staff = (
@@ -44,26 +43,131 @@ def _require_staff(creds: HTTPBasicCredentials = Depends(security)) -> None:
             headers={"WWW-Authenticate": "Basic"},
         )
 
-
 # ----------------------------
 # Jinja filter: Bangkok time (UTC naive -> +7)
 # ----------------------------
 def to_bkk(dt: datetime | None) -> str:
     if not dt:
         return ""
-    # ระบบคุณบันทึก utcnow() แบบ naive → บวก 7 ชั่วโมงตรง ๆ
     return (dt + timedelta(hours=7)).strftime("%d/%m/%Y %H:%M")
-
 
 templates.env.filters["bkk"] = to_bkk
 
+# ----------------------------
+# Report Snapshots (view/list/delete/clear/save)
+# ----------------------------
+@router.get(
+    "/staff/report/snapshots",
+    response_class=HTMLResponse,
+    dependencies=[Depends(_require_staff)],
+)
+def report_snapshots(request: Request, db: Session = Depends(get_db)):
+    snaps = db.query(ReportSnapshot).order_by(ReportSnapshot.id.desc()).limit(200).all()
+    return templates.TemplateResponse(
+        "staff_report_snapshots.html",
+        {"request": request, "snaps": snaps},
+    )
+
+@router.get(
+    "/staff/report/snapshots/{snapshot_id}",
+    response_class=HTMLResponse,
+    dependencies=[Depends(_require_staff)],
+)
+def report_snapshot_detail(request: Request, snapshot_id: int, db: Session = Depends(get_db)):
+    snap = db.query(ReportSnapshot).filter(ReportSnapshot.id == snapshot_id).first()
+    if not snap:
+        raise HTTPException(status_code=404, detail="Snapshot not found")
+
+    ids = [int(x) for x in (snap.order_ids_csv or "").split(",") if x.strip().isdigit()]
+    orders = []
+    if ids:
+        orders = (
+            db.query(Order)
+            .options(joinedload(Order.table), joinedload(Order.payment))
+            .filter(Order.id.in_(ids))
+            .order_by(Order.id.desc())
+            .all()
+        )
+
+    return templates.TemplateResponse(
+        "staff_report_snapshot_detail.html",
+        {"request": request, "snap": snap, "orders": orders},
+    )
+
+@router.post(
+    "/staff/report/snapshots/{snapshot_id}/delete",
+    dependencies=[Depends(_require_staff)],
+)
+def delete_snapshot(snapshot_id: int, db: Session = Depends(get_db)):
+    snap = db.query(ReportSnapshot).filter(ReportSnapshot.id == snapshot_id).first()
+    if not snap:
+        raise HTTPException(status_code=404, detail="Snapshot not found")
+    db.delete(snap)
+    db.commit()
+    return {"ok": True}
+
+@router.post(
+    "/staff/report/snapshots/clear",
+    dependencies=[Depends(_require_staff)],
+)
+def clear_all_snapshots(db: Session = Depends(get_db)):
+    db.query(ReportSnapshot).delete()
+    db.commit()
+    return {"ok": True}
+
+@router.post(
+    "/staff/report/save",
+    dependencies=[Depends(_require_staff)],
+)
+def save_report_snapshot(
+    request: Request,
+    db: Session = Depends(get_db),
+    date_from: str | None = None,
+    date_to: str | None = None,
+    hour_from: str | None = None,
+    hour_to: str | None = None,
+    note: str | None = None,
+):
+    q = (
+        db.query(Order)
+        .join(Payment, Payment.order_id == Order.id)
+        .filter(Payment.status == "paid")
+    )
+
+    if date_from and date_to:
+        start = f"{date_from} 00:00:00"
+        end = f"{date_to} 23:59:59"
+        if hour_from:
+            start = f"{date_from} {hour_from}:00"
+        if hour_to:
+            end = f"{date_to} {hour_to}:59"
+        q = q.filter(Order.created_at >= start).filter(Order.created_at <= end)
+
+    orders = q.order_by(Order.id.desc()).all()
+    total_amount = sum(float(o.total_amount) for o in orders)
+    total_count = len(orders)
+    order_ids_csv = ",".join(str(o.id) for o in orders)
+
+    snap = ReportSnapshot(
+        date_from=date_from,
+        date_to=date_to,
+        hour_from=hour_from,
+        hour_to=hour_to,
+        total_amount=total_amount,
+        total_count=total_count,
+        order_ids_csv=order_ids_csv,
+        note=note,
+    )
+    db.add(snap)
+    db.commit()
+
+    return {"ok": True, "snapshot_id": snap.id}
 
 # ----------------------------
 # Staff Dashboard
 # ----------------------------
 @router.get("/staff", response_class=HTMLResponse, dependencies=[Depends(_require_staff)])
 def staff_dashboard(request: Request, db: Session = Depends(get_db)):
-    # ✅ โหลดความสัมพันธ์ให้ครบ ไม่งั้น template/JS จะเจอค่า None บ่อย
     orders = (
         db.query(Order)
         .options(
@@ -80,7 +184,6 @@ def staff_dashboard(request: Request, db: Session = Depends(get_db)):
         "staff_dashboard.html",
         {"request": request, "orders": orders},
     )
-
 
 # ----------------------------
 # Order detail
@@ -108,7 +211,6 @@ def staff_order_detail(request: Request, order_id: int, db: Session = Depends(ge
         "staff_order_detail.html",
         {"request": request, "order": order},
     )
-
 
 # ----------------------------
 # Update order status
@@ -140,21 +242,14 @@ async def update_order_status(order_id: int, status: str, db: Session = Depends(
 
     db.commit()
 
-    payload = {
-        "type": "order_status",
-        "order_id": order.id,
-        "order_status": order.order_status,
-    }
+    payload = {"type": "order_status", "order_id": order.id, "order_status": order.order_status}
 
-    # staff realtime
     await ws_manager.broadcast("staff", payload)
 
-    # table realtime
     if getattr(order, "table", None) is not None and getattr(order.table, "token", None):
         await ws_manager.broadcast(f"table:{order.table.token}", payload)
 
     return {"ok": True, "order_id": order.id, "order_status": order.order_status}
-
 
 # ----------------------------
 # Confirm payment
@@ -179,7 +274,6 @@ async def notify_payment_received(order_id: int, db: Session = Depends(get_db)):
         payment.paid_at = datetime.utcnow()
         db.commit()
     else:
-        # กดซ้ำก็ยังยิง WS ให้ UI อัปเดตได้
         db.commit()
 
     payload = {
@@ -197,7 +291,6 @@ async def notify_payment_received(order_id: int, db: Session = Depends(get_db)):
 
     return {"ok": True, "order_id": order.id, "payment_status": payment.status}
 
-
 # ----------------------------
 # Sales report
 # ----------------------------
@@ -210,31 +303,19 @@ def staff_report(
     hour_from: str | None = None,
     hour_to: str | None = None,
 ):
-    from datetime import datetime
-
-    dialect = getattr(getattr(db, "bind", None), "dialect", None)
-    is_sqlite = bool(dialect and dialect.name == "sqlite")
-
-    # query เฉพาะ paid
     q = (
         db.query(Order)
         .join(Payment, Payment.order_id == Order.id)
         .filter(Payment.status == "paid")
     )
 
-    # -----------------------
-    # Apply date/hour filter
-    # -----------------------
     if date_from and date_to:
         start = f"{date_from} 00:00:00"
         end = f"{date_to} 23:59:59"
-
         if hour_from:
             start = f"{date_from} {hour_from}:00"
-
         if hour_to:
             end = f"{date_to} {hour_to}:59"
-
         q = q.filter(Order.created_at >= start).filter(Order.created_at <= end)
 
     orders = q.order_by(Order.id.desc()).all()
@@ -255,5 +336,3 @@ def staff_report(
             "hour_to": hour_to,
         },
     )
-
-

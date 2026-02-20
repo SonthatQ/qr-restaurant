@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+  <div>
+    <h4 class="mb-0">📌 Report Snapshot #{{ snap.id }}</h4>
+    <div class="text-muted small">
+      Saved: {{ snap.created_at|bkk }} • Note: {{ snap.note or "-" }}
+    </div>
+  </div>
+
+  <div class="d-flex gap-2">
+    <a href="/staff/report/snapshots" class="btn btn-outline-secondary btn-sm">← Back</a>
+    <button class="btn btn-outline-danger btn-sm" onclick="delOne()">🗑️ Delete</button>
+  </div>
+</div>
+
+<div class="row g-3 mb-3">
+  <div class="col-12 col-md-4">
+    <div class="card shadow-sm border-0 h-100">
+      <div class="card-body">
+        <div class="text-muted small">จำนวนออเดอร์</div>
+        <div class="fs-4 fw-bold text-primary">{{ snap.total_count }}</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-12 col-md-4">
+    <div class="card shadow-sm border-0 h-100">
+      <div class="card-body">
+        <div class="text-muted small">ยอดขายรวม</div>
+        <div class="fs-4 fw-bold text-success">฿{{ "{:,.2f}".format(snap.total_amount|float) }}</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-12 col-md-4">
+    <div class="card shadow-sm border-0 h-100">
+      <div class="card-body">
+        <div class="text-muted small">ช่วงเวลา</div>
+        <div class="small">
+          {{ snap.date_from or "-" }} {{ snap.hour_from or "" }}
+          → {{ snap.date_to or "-" }} {{ snap.hour_to or "" }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="card shadow-sm p-3" style="max-height: 600px; overflow-y: auto;">
+  <table class="table table-sm table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Table</th>
+        <th>Invoice</th>
+        <th>Date</th>
+        <th>Total</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for o in orders %}
+      <tr>
+        <td>{{ o.id }}</td>
+        <td>{{ o.table.name if o.table else "-" }}</td>
+        <td>{{ o.invoice_ref }}</td>
+        <td>{{ o.created_at|bkk }}</td>
+        <td>฿{{ '%.2f'|format(o.total_amount) }}</td>
+        <td><a href="/staff/orders/{{ o.id }}" class="btn btn-sm btn-outline-dark">Detail</a></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<script>
+async function delOne() {
+  if (!confirm("ลบ snapshot นี้ใช่ไหม?")) return;
+  const res = await fetch("/staff/report/snapshots/{{ snap.id }}/delete", { method: "POST" });
+  if (!res.ok) return alert("ลบไม่สำเร็จ");
+  location.href = "/staff/report/snapshots";
+}
+</script>
+
+{% endblock %}

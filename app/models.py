@@ -16,7 +16,30 @@ from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from app.database import Base
 
+# app/models.py (ตัวอย่าง)
+from sqlalchemy import Column, Integer, String, DateTime, Numeric, Text
+from datetime import datetime
+from app.database import Base
 
+class ReportSnapshot(Base):
+    __tablename__ = "report_snapshots"
+
+    id = Column(Integer, primary_key=True)
+    created_at = Column(DateTime, default=datetime.utcnow, nullable=False)
+
+    # ช่วง filter ที่เซฟไว้
+    date_from = Column(String, nullable=True)
+    date_to = Column(String, nullable=True)
+    hour_from = Column(String, nullable=True)
+    hour_to = Column(String, nullable=True)
+
+    # summary
+    total_count = Column(Integer, default=0, nullable=False)
+    total_amount = Column(Numeric(12, 2), default=0, nullable=False)
+
+    # เก็บรายการ order ids (ง่ายสุดเป็น text/csv หรือ json string)
+    order_ids_csv = Column(Text, nullable=False, default="")
+    note = Column(String, nullable=True)  # ตั้งชื่อ/โน้ตได้ เช่น "รอบเช้า"
 class Table(Base):
     __tablename__ = "tables"
 

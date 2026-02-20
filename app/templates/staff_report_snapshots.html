@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+  <h4 class="mb-0">🗂️ Saved Reports</h4>
+
+  <div class="d-flex gap-2">
+    <a href="/staff/report" class="btn btn-outline-secondary btn-sm">← Back</a>
+    <button class="btn btn-outline-danger btn-sm" onclick="clearAll()">🧹 Clear list</button>
+  </div>
+</div>
+
+<div class="card shadow-sm p-3">
+  {% if not snaps or snaps|length == 0 %}
+    <div class="text-muted">ยังไม่มี report ที่บันทึก</div>
+  {% else %}
+  <table class="table table-sm table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Saved at</th>
+        <th>Range</th>
+        <th>Total</th>
+        <th>Count</th>
+        <th>Note</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for s in snaps %}
+      <tr>
+        <td>{{ s.id }}</td>
+        <td>{{ s.created_at|bkk }}</td>
+        <td>
+          {{ s.date_from or "-" }} {{ s.hour_from or "" }}
+          →
+          {{ s.date_to or "-" }} {{ s.hour_to or "" }}
+        </td>
+        <td>฿{{ "{:,.2f}".format(s.total_amount|float) }}</td>
+        <td>{{ s.total_count }}</td>
+        <td>{{ s.note or "" }}</td>
+        <td>
+          <a href="/staff/report/snapshots/{{ s.id }}" class="btn btn-sm btn-outline-dark">View</a>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% endif %}
+</div>
+
+<script>
+async function clearAll() {
+  if (!confirm("เคลียร์รายการ saved reports ทั้งหมดใช่ไหม?")) return;
+  const res = await fetch("/staff/report/snapshots/clear", { method: "POST" });
+  if (!res.ok) return alert("เคลียร์ไม่สำเร็จ");
+  location.reload();
+}
+</script>
+
+{% endblock %}
