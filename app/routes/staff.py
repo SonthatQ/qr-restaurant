@@ -16,7 +16,7 @@ from app.database import get_db
 from app.models import Order, Payment, OrderItem, ReportSnapshot
 from app.services.ws_manager import ws_manager
 from app.settings import settings
-
+import os
 # ----------------------------
 # Router / Templates / Security  (ต้องอยู่ก่อนใช้ @router)
 # ----------------------------
@@ -334,5 +334,6 @@ def staff_report(
             "date_to": date_to,
             "hour_from": hour_from,
             "hour_to": hour_to,
+            "render_commit": (os.getenv("RENDER_GIT_COMMIT") or "")[:7],
         },
     )
